@@ -74,7 +74,7 @@ public class HttpPostExample
       System.err.println("WARN: IOException e: " + e);
     }
     catch (Exception ex) {
-      System.err.println("WARN: Exception ex: " + ex);
+      System.err.println("ERROR: Exception ex: " + ex);
     }
   }
 }
