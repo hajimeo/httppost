@@ -31,7 +31,7 @@ public class HttpPostExample
 
     if (args.length == 0) {
       // TODO: Add proper usage/help message.
-      System.out.println("Example:\n    java -jar target/httppost-1.0-SNAPSHOT.jar \"http://dh1.standalone.localdomain:8081/service/rest/v1/components?repository=${_REPO_NAME}\" \"com.example\" \"httppost\" \"1.0-SNAPSHOT\" ./target/httppost-1.0-SNAPSHOT.jar");
+      System.out.println("Example:\n    java -jar target/httppost-1.0-SNAPSHOT.jar \"http://localhost:8081/service/rest/v1/components?repository=${_REPO_NAME}\" \"com.example\" \"httppost\" \"1.0-SNAPSHOT\" ./target/httppost-1.0-SNAPSHOT.jar");
       System.exit(1);
     }
     String nexusUrlWithRepoName = args[0];
