@@ -8,9 +8,6 @@
  *    -F maven2.asset1.extension=jar
  *
  * @see: https://www.baeldung.com/httpclient-post-http-request
- *
- * Example:
- *  java HttpPostExample "http://`hostname -f`:8081/service/rest/v1/components?repository=${_REPO_NAME}" "com.mycompany" "project-abc" "2.1.1" ./project-abc-2.1.1.jar
  */
 
 import java.io.File;
@@ -32,14 +29,19 @@ public class HttpPostExample
     String user = "admin";
     String pwd = "admin123";
 
+    if (args.length == 0) {
+      // TODO: Add proper usage/help message.
+      System.out.println("Example:\n    java -jar target/httppost-1.0-SNAPSHOT.jar \"http://dh1.standalone.localdomain:8081/service/rest/v1/components?repository=${_REPO_NAME}\" \"com.example\" \"httppost\" \"1.0-SNAPSHOT\" ./target/httppost-1.0-SNAPSHOT.jar");
+      System.exit(1);
+    }
     String nexusUrlWithRepoName = args[0];
     String groupId = args[1];
     String artifactId = args[2];
     String version = args[3];
     String filePath = args[4];
-    String extension = "jar";
+    String ext = "jar";
     if(args.length > 5) {
-      extension = args[5];
+      ext = args[5];
     }
 
     try {
@@ -57,9 +59,9 @@ public class HttpPostExample
           .addTextBody("maven2.groupId", groupId)
           .addTextBody("maven2.artifactId", artifactId)
           .addTextBody("maven2.version", version)
-          .addBinaryBody("file", file, ContentType.APPLICATION_OCTET_STREAM, fileName)
-          .addTextBody("maven2.assert1.extension", extension)
-          //.addPart("maven2.generate-pom", new StringBody("true"))
+          .addTextBody("maven2.asset1.extension", ext)
+          .addBinaryBody("maven2.asset1", file, ContentType.APPLICATION_OCTET_STREAM, fileName)
+          //.addTextBody("maven2.generate-pom", "true")
           .build();
       httpPost.setEntity(entity);
 

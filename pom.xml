@@ -36,7 +36,7 @@
                 <!-- add Main-Class to manifest file -->
                 <transformer
                     implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>com.google.cloud.examples.bigquery.BigQueryExample</mainClass>
+                  <mainClass>HttpPostExample</mainClass>
                 </transformer>
               </transformers>
             </configuration>
